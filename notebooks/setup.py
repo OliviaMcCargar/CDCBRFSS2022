@@ -14,7 +14,7 @@ parent = os.path.dirname(current)
 sys.path.append(parent)
 
 from CDCBRFSS.utils import project_dir
-from CDCBRFSS.data import variable_descriptions, raw_data_2022
+from CDCBRFSS.data import variable_descriptions, raw_data_2022, translation_table
 
 def main():
     pass
