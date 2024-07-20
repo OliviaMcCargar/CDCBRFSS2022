@@ -78,17 +78,24 @@ def create_descriptions_table(tree):
         if (variable != ""):
             dict = {'Variable': variable, 'Description': description, 'Label':label, 'Type':variable_type, 'Section':section_name, 'Prologue':prologue}
             variable_descriptions = variable_descriptions.append(dict, ignore_index = True)
+        
+        if(variable == "_STATE"):
+            print("State table found!")
+            for tr in table.findall('./{http://www.w3.org/1999/xhtml}tbody/{http://www.w3.org/1999/xhtml}tr'):
+                print("\nNew Row Starts")
+                for index,td in enumerate(tr.findall('./{http://www.w3.org/1999/xhtml}td')):
+                    print("Variable: ", variable, "Line:", index, "Text: ", td.text)
     
     return(variable_descriptions)
 
 filepath = os.path.join(raw_data_2022_dir, 'USCODE22_LLCP_102523.HTML')
 variable_descriptions = load_data_dictionary_descriptors(filepath)
 
-filepath = os.path.join(raw_data_2022_dir, 'LLCP2022.XPT')
-raw_data_2022 = pd.read_sas(filepath, format='xport', encoding='utf-8')
+# filepath = os.path.join(raw_data_2022_dir, 'LLCP2022.XPT')
+# raw_data_2022 = pd.read_sas(filepath, format='xport', encoding='utf-8')
 
 def main():
-    print(variable_descriptions)
+    print("End Process")
 
 if __name__ == "__main__":
     main()
