@@ -9,6 +9,7 @@ A personal project showcasing the building of a bespoke data pipeline from raw i
 I am a solo dev with an MS in Computer Science with a focus on data anlytics. My primary work background is in higher education, but I am hoping to pivot to doing data analysis in either public health or healthcare with a goal towards data engineering. If yo uare interested in seeing more of my work, please visit my website: [http://www.oliviamccargar.com](http://www.oliviamccargar.com)
 
 ### Building The PostgreSQL Database
+*Lightly updated script and process from [Vishal Sharma](https://medium.com/@vishal.sharma./run-postgresql-and-pgadmin-using-docker-compose-34120618bcf9)*
 
 - [Docker](https://docs.docker.com/get-docker/) must be installed and functional on your system.
 - Open a terminal and navigate to the top level CDCBRFSS folder
