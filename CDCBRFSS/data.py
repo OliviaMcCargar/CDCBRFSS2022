@@ -20,6 +20,7 @@ def load_data_dictionary_descriptors(filepath):
     variable_descriptions : dataframe
         The data dictionary for the CDCBRFSS file with the header, description, value, and value conversion in a long table
     """
+    # New Test Comment
     with open(filepath, "rb") as f:
         document = html5lib.parse(f)
         return create_descriptions_table(document)
@@ -77,7 +78,8 @@ def create_descriptions_table(tree):
 
         if (variable != ""):
             dict = {'Variable': variable, 'Description': description, 'Label':label, 'Type':variable_type, 'Section':section_name, 'Prologue':prologue}
-            variable_descriptions = variable_descriptions.append(dict, ignore_index = True)
+            new_row = pd.DataFrame([dict])
+            variable_descriptions = pd.concat([variable_descriptions, new_row], ignore_index=True)
     
     return(variable_descriptions)
 
@@ -157,9 +159,9 @@ def create_value_translation_table(tree):
                 
             if(variable != "" and translation != "" and value != "BLANK"):
                 dict = {'Variable': variable, 'Value': value, 'Translation':translation, 'Frequency':frequency, 'Percent':percent, 'Weighted':weighted}
-                translation_table = translation_table.append(dict, ignore_index = True)
+                new_row = pd.DataFrame([dict])
+                translation_table = pd.concat([translation_table, new_row], ignore_index=True)
 
-    
     return(translation_table)
 
 filepath = os.path.join(raw_data_2022_dir, 'USCODE22_LLCP_102523.HTML')
