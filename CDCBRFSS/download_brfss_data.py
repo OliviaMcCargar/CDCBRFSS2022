@@ -55,12 +55,14 @@ def unzip_file(file_path, file_directory):
     # opening the zip file in READ mode 
     with zipfile.ZipFile(file_path, 'r') as zip: 
         # read the name of the file
-        extracted_file_name = os.path.join(file_directory, zip.namelist()[0]).strip()
+        extracted_file_name = os.path.join(file_directory, zip.namelist()[0])
         # extracting all the files 
         print('Extracting all the files now...') 
-        zip.extractall(file_directory) 
+        zip.extractall(file_directory)
+        print("Renaming File to remove white spaces")
+        os.rename(extracted_file_name, extracted_file_name.strip())
         print('Done!')
-        return(extracted_file_name)
+        return(extracted_file_name.strip())
 
 def delete_file(file_path):
     """
