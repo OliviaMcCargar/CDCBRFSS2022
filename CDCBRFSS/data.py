@@ -1,9 +1,15 @@
 import os
+import sys
 import pandas as pd
-import xml.etree.ElementTree as ET
 import html5lib
 
-project_dir = os.path.join(os.path.dirname( __file__ ), os.path.pardir)
+current = os.path.dirname(os.path.realpath(__file__))
+parent = os.path.dirname(current)
+sys.path.append(parent)
+
+from CDCBRFSS.download_brfss_data import variable_data_file_path, raw_survey_data_file_path
+
+project_dir = parent
 raw_data_2022_dir = os.path.join(project_dir, 'data', 'raw', '2022')
 
 def load_data_dictionary_descriptors(filepath):
@@ -164,15 +170,13 @@ def create_value_translation_table(tree):
 
     return(translation_table)
 
-filepath = os.path.join(raw_data_2022_dir, 'USCODE22_LLCP_102523.HTML')
-variable_descriptions = load_data_dictionary_descriptors(filepath)
-translation_table = load_data_dictionary_translations(filepath)
+variable_descriptions = load_data_dictionary_descriptors(variable_data_file_path)
+translation_table = load_data_dictionary_translations(variable_data_file_path)
 
 # filepath = os.path.abspath(os.path.join(project_dir, 'data', 'clean', '2022', 'translation_table_2022.csv'))
 # translation_table.to_csv(filepath, index=False)
 
-filepath = os.path.join(raw_data_2022_dir, 'LLCP2022.XPT')
-raw_data_2022 = pd.read_sas(filepath, format='xport', encoding='utf-8')
+raw_data_2022 = pd.read_sas(raw_survey_data_file_path, format='xport', encoding='utf-8')
 
 def main():
     print(translation_table)
