@@ -6,11 +6,10 @@ import html5lib
 current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 sys.path.append(parent)
+ 
+from CDCBRFSS.config import *
 
-from CDCBRFSS.download_brfss_data import variable_data_file_path, raw_survey_data_file_path
-
-project_dir = parent
-raw_data_2022_dir = os.path.join(project_dir, 'data', 'raw', '2022')
+from CDCBRFSS.download_brfss_data import VARIABLE_DATA_FILE_PATH, RAW_SURVEY_DATA_2022_FILE_PATH
 
 def load_data_dictionary_descriptors(filepath):
     """
@@ -170,16 +169,12 @@ def create_value_translation_table(tree):
 
     return(translation_table)
 
-variable_descriptions = load_data_dictionary_descriptors(variable_data_file_path)
-translation_table = load_data_dictionary_translations(variable_data_file_path)
-
-# filepath = os.path.abspath(os.path.join(project_dir, 'data', 'clean', '2022', 'translation_table_2022.csv'))
-# translation_table.to_csv(filepath, index=False)
-
-raw_data_2022 = pd.read_sas(raw_survey_data_file_path, format='xport', encoding='utf-8')
+variable_descriptions = load_data_dictionary_descriptors(VARIABLE_DATA_FILE_PATH)
+translation_table = load_data_dictionary_translations(VARIABLE_DATA_FILE_PATH)
+raw_data_2022 = pd.read_sas(RAW_SURVEY_DATA_2022_FILE_PATH, format='xport', encoding='utf-8')
 
 def main():
-    print(translation_table)
+    pass
 
 if __name__ == "__main__":
     main()

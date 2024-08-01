@@ -12,7 +12,7 @@ RUN conda update conda \
 
 ## MAKE ALL BELOW RUN COMMANDS USE THE NEW CONDA ENVIRONMENT
 RUN echo "conda activate $env_name" >> ~/.bashrc
-RUN conda install html5lib pandas numpy
+RUN conda install html5lib pandas numpy psycopg2
 RUN conda run -n $env_name python -m ipykernel install --user --name=$env_name
 
 ## COPY REST OF THE FILES

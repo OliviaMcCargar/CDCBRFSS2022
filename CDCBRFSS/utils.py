@@ -1,10 +1,14 @@
 import os
+import sys
 
-project_dir = os.path.join(os.path.dirname( __file__ ), os.path.pardir)
-raw_data_2022_dir = os.path.join(project_dir, 'data', 'raw', '2022')
+current = os.path.dirname(os.path.realpath(__file__))
+parent = os.path.dirname(current)
+sys.path.append(parent)
+ 
+from CDCBRFSS.config import *
 
 def main():
-    print(raw_data_2022_dir)
+    pass
 
 if __name__ == "__main__":
     main()

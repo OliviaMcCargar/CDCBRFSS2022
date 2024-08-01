@@ -2,10 +2,12 @@ import sys
 import os
 import requests
 import zipfile
- 
+
 current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 sys.path.append(parent)
+ 
+from CDCBRFSS.config import *
 
 def download_external_file(download_file_url, file_directory):
     """
@@ -95,18 +97,20 @@ def download_and_extract_file(download_file_url, file_directory):
         delete_file(zip_file_path)
     return(file_path)
 
-data_directory = os.path.join(parent, 'data', 'raw', '2022')
-variable_data_url = 'https://www.cdc.gov/brfss/annual_data/2022/zip/codebook22_llcp-v2-508.zip'
-raw_survey_data_url = 'https://www.cdc.gov/brfss/annual_data/2022/files/LLCP2022XPT.zip'
-
-variable_data_file_path = os.path.join(data_directory, 'USCODE22_LLCP_102523.HTML')
-raw_survey_data_file_path = os.path.join(data_directory, 'LLCP2022.XPT')
+variable_data_file_path = os.path.join(DATA_DIRECTORY_2022, DEFAULT_VARIABLE_DATA_2022_FILE_NAME)
+raw_survey_data_file_path = os.path.join(DATA_DIRECTORY_2022, DEFAULT_RAW_SURVEY_DATA_2022_FILE_NAME)
 
 if not os.path.isfile(variable_data_file_path):
-    variable_data_file_path = download_and_extract_file(variable_data_url, data_directory)
+    variable_data_file_path = download_and_extract_file(VARIABLE_DATA_2022_URL, DATA_DIRECTORY_2022)
 
 if not os.path.isfile(raw_survey_data_file_path):
-    raw_survey_data_file_path = download_and_extract_file(raw_survey_data_url, data_directory)
+    raw_survey_data_file_path = download_and_extract_file(RAW_SURVEY_DATA_2022_URL, DATA_DIRECTORY_2022)
+
+global VARIABLE_DATA_2022_FILE_PATH
+global RAW_SURVEY_DATA_2022_FILE_PATH
+
+VARIABLE_DATA_FILE_PATH = variable_data_file_path
+RAW_SURVEY_DATA_2022_FILE_PATH = raw_survey_data_file_path
 
 def main():
     pass
