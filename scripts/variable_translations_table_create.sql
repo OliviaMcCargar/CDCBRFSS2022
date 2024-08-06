@@ -7,5 +7,5 @@ CREATE TABLE variable_translations (
      TRANSLATION TEXT,
      FREQUENCY TEXT,
      PERCENT TEXT,
-     WEIGHTED TEXT,
+     WEIGHTED TEXT
 );

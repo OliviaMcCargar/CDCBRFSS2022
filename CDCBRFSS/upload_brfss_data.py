@@ -47,8 +47,12 @@ def write_table_creation_sql(table_name, primary_key_name, table):
     """
     sql_output = 'DROP TABLE IF EXISTS ' + table_name + ';\n\nCREATE TABLE ' + table_name + ' (\n     ' + primary_key_name + ' SERIAL PRIMARY KEY,\n'
 
+    last_column = table.columns[-1]
     for column in table.columns:
-        sql_output += '     ' + column.upper() + ' TEXT,\n'
+        sql_output += '     ' + column.upper() + ' TEXT' 
+        if column != last_column:
+            sql_output += ','
+        sql_output += '\n'
 
     sql_output += ');'
 

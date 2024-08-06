@@ -7,5 +7,5 @@ CREATE TABLE variable_descriptions (
      LABEL TEXT,
      TYPE TEXT,
      SECTION TEXT,
-     PROLOGUE TEXT,
+     PROLOGUE TEXT
 );

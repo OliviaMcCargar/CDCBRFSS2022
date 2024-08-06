@@ -329,5 +329,5 @@ CREATE TABLE raw_data_2022 (
      _RFDRHV8 TEXT,
      _FLSHOT7 TEXT,
      _PNEUMO3 TEXT,
-     _AIDTST4 TEXT,
+     _AIDTST4 TEXT
 );
