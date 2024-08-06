@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS variable_descriptions;
+
+CREATE TABLE variable_descriptions (
+     VARIABLE_ID SERIAL PRIMARY KEY,
+     VARIABLE TEXT,
+     DESCRIPTION TEXT,
+     LABEL TEXT,
+     TYPE TEXT,
+     SECTION TEXT,
+     PROLOGUE TEXT,
+);

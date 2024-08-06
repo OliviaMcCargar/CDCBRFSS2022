@@ -7,7 +7,7 @@ WORKDIR /app
 
 ## CREATE CONDA ENVIRONMENT
 RUN conda update conda \
-    && conda create --name $env_name
+    && conda create --name $env_name python=3.11.6
 
 
 ## MAKE ALL BELOW RUN COMMANDS USE THE NEW CONDA ENVIRONMENT
