@@ -14,9 +14,8 @@ tests/.cache/v/cache/lastfailed
 .DS_Store
 
 # Large Data Files
-data/clean
-data/raw/2022/*.XPT
-data/raw/2022/*.html
+data/clean/
+data/raw/
 
 ##
 ## R Section - See https://github.com/github/gitignore/blob/master/R.gitignore

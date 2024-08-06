@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS variable_translations;
+
+CREATE TABLE variable_translations (
+     TRANSLATION_ID SERIAL PRIMARY KEY,
+     VARIABLE TEXT,
+     VALUE TEXT,
+     TRANSLATION TEXT,
+     FREQUENCY TEXT,
+     PERCENT TEXT,
+     WEIGHTED TEXT
+);
